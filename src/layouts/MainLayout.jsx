@@ -1,5 +1,13 @@
+import Header from "../components/header/Header";
 const MainLayout = ({ children }) => {
-  return <main>{children}</main>;
+  return (
+    <>
+      <div className="flex flex-col min-h-screen">
+        <Header />
+        <main>{children}</main>
+      </div>
+    </>
+  );
 };
 
 export default MainLayout;
