@@ -17,7 +17,8 @@ const Hero = () => {
       <div className="mx-auto max-w-2xl py-20 sm:py-48 lg:py-25">
         <div className="text-center mb-4 sm:mb-5 sm:flex sm:justify-center">
           <div className="relative rounded-full px-3 py-1 text-xl text-gray-600">
-            Hi I am <span className="font-semibold text-indigo-600">Chino</span>
+            Hi, I am{" "}
+            <span className="font-semibold text-indigo-600">Chino</span>
           </div>
         </div>
 
