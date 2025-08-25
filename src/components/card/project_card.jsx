@@ -1,34 +1,64 @@
 import ProjectsData from "../../data/projects_data";
+import { Link } from "react-router-dom";
+import { ArrowRightIcon } from "@heroicons/react/24/outline";
+import GitHubIcon from "../../assets/icons/GitHub.svg";
 
 const Project = () => {
   const projects = ProjectsData();
 
   return (
-    <div className="flex justify-center flex-wrap gap-8">
-      {projects.map((project) => (
-        <div
-          key={project.ID}
-          className="card bg-base-100 shadow-xl rounded-xl overflow-hidden w-full sm:w-96 md:w-[450px] lg:w-[500px]"
-        >
-          {/* Image */}
-          <figure>
-            <img
-              src={project.URL}
-              alt={project.Title}
-              className="object-contain h-48 md:h-full w-full p-4 rounded-lg"
-            />
-          </figure>
+    <div className="w-full px-4 sm:px-6 lg:px-20 py-10">
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {projects.map((project) => (
+          <div
+            key={project.ID}
+            className="card bg-white shadow-lg rounded-2xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 flex flex-col"
+          >
+            {/* Image */}
+            <figure className="relative w-full h-52 bg-gray-50 flex items-center justify-center">
+              <img
+                src={project.URL}
+                alt={project.Title}
+                className="object-contain h-full w-full p-4"
+              />
+            </figure>
 
-          {/* Card Body */}
-          <div className="card-body p-6">
-            <h3 className="text-2xl font-bold mb-2">{project.Title}</h3>
-            <p className="text-gray-700">{project.Tagline}</p>
-            <div className="card-actions justify-end pt-2">
-              <button className="btn btn-primary">Details</button>
+            {/* Card Body */}
+            <div className="card-body p-6 flex flex-col flex-grow">
+              <h3 className="text-xl font-bold mb-2 text-gray-800">
+                {project.Title}
+              </h3>
+              <p className="text-gray-600 text-sm line-clamp-2 flex-grow">
+                {project.Tagline}
+              </p>
+
+              {/* Actions */}
+              <div className="card-actions mt-4 flex items-center justify-between">
+                {/* GitHub Link */}
+                {project.Github && (
+                  <a
+                    href={project.Github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-gray-700 hover:text-black transition-colors"
+                  >
+                    <img src={GitHubIcon} alt="GitHub" className="w-6 h-6" />
+                    <span className="text-sm">GitHub</span>
+                  </a>
+                )}
+
+                {/* Details Button */}
+                <Link to={`/Project/${project.Slug}`}>
+                  <button className="btn btn-primary flex items-center gap-2">
+                    Details
+                    <ArrowRightIcon className="w-5 h-5" />
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };

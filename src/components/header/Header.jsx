@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { HashLink } from "react-router-hash-link";
 
 const navigation = [
   { name: "Home", href: "#" },
-  { name: "About", href: "#" },
-  { name: "Project", href: "#" },
-  { name: "Contact", href: "#" },
+  { name: "About", href: "#about" },
+  { name: "Project", href: "#projects" },
+  { name: "Contact", href: "#contact" },
 ];
 
 const Header = () => {
@@ -36,9 +37,9 @@ const Header = () => {
       >
         {/* Logo */}
         <div className="flex lg:flex-1">
-          <a href="#" className="text-xl font-bold">
+          <HashLink smooth to={"/"} className="text-xl font-bold">
             CHINO
-          </a>
+          </HashLink>
         </div>
 
         {/* Mobile menu button */}
@@ -56,15 +57,16 @@ const Header = () => {
         <ul className="hidden lg:flex lg:gap-x-6">
           {navigation.map((item) => (
             <li key={item.name}>
-              <a
-                href={item.href}
+              <HashLink
+                smooth
+                to={`/${item.href}`}
                 onClick={() => handleActiveNavItem(item.name)}
                 className={`font-medium p-3 hover:text-gray-800 ${
                   activeNavItem === item.name ? "text-primary" : "text-gray-700"
                 }`}
               >
                 {item.name}
-              </a>
+              </HashLink>
             </li>
           ))}
         </ul>

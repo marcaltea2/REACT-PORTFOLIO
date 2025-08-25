@@ -1,12 +1,17 @@
 import Hero from "../components/hero/Hero";
 import About from "../features/about/About";
+import Project from "../features/projects/Projects";
+import Footer from "../components/footer/Footer";
+import MainLayout from "../layouts/MainLayout";
 
 const Home = () => {
   return (
-    <main>
+    <MainLayout>
       <Hero />
       <About />
-    </main>
+      <Project />
+      <Footer />
+    </MainLayout>
   );
 };
 
