@@ -37,7 +37,7 @@ const Header = () => {
       >
         {/* Logo */}
         <div className="flex lg:flex-1">
-          <HashLink smooth to={"/"} className="text-xl font-bold">
+          <HashLink smooth to={"/#"} className="text-xl font-bold">
             CHINO
           </HashLink>
         </div>
@@ -82,9 +82,14 @@ const Header = () => {
         {/* overlay */}
         <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-base-100 p-6 sm:max-w-sm shadow-lg">
           <div className="flex items-center justify-between">
-            <a href="#" className="text-xl font-medium">
+            <HashLink
+              smooth
+              to={"/#"}
+              className="text-xl font-medium"
+              onClick={() => setMobileMenuOpen(false)}
+            >
               CHINO
-            </a>
+            </HashLink>
             <button
               type="button"
               onClick={() => setMobileMenuOpen(false)}
@@ -97,9 +102,13 @@ const Header = () => {
             <ul className="flex flex-col gap-2">
               {navigation.map((item) => (
                 <li key={item.name}>
-                  <a
-                    href={item.href}
-                    onClick={() => handleActiveNavItem(item.name)}
+                  <HashLink
+                    smooth
+                    to={`/${item.href}`}
+                    onClick={() => {
+                      handleActiveNavItem(item.name);
+                      setMobileMenuOpen(false); // close mobile menu
+                    }}
                     className={`p-3 font-medium justify-start ${
                       activeNavItem === item.name
                         ? "text-primary"
@@ -107,7 +116,7 @@ const Header = () => {
                     }`}
                   >
                     {item.name}
-                  </a>
+                  </HashLink>
                 </li>
               ))}
             </ul>
