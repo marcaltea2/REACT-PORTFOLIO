@@ -1,9 +1,12 @@
+import { HashLink } from "react-router-hash-link";
+import Resume from "../../assets/pdf/Altea-Marc-Chino-N.-CV.pdf";
+
 const Hero = () => {
   return (
     <div className="relative isolate px-6 pt-14 lg:px-8">
       <div
         aria-hidden="true"
-        className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+        className="absolute inset-x-0 -top-40 -z-10 transfor  m-gpu overflow-hidden blur-3xl sm:-top-80"
       >
         <div
           style={{
@@ -31,10 +34,10 @@ const Hero = () => {
             functionality.
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
-            <a href="#" className="btn btn-primary">
+            <HashLink smooth to={"/#projects"} className="btn btn-primary">
               My Projects
-            </a>
-            <a href="#" className="text-sm/6 font-semibold text-gray-900">
+            </HashLink>
+            <a href={Resume} className="text-sm/6 font-semibold text-gray-900">
               Download CV
             </a>
           </div>
